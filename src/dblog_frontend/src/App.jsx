@@ -4,14 +4,14 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import Post from "./components/Post";
 import Blogs from "./components/Blogs";
+import Admin from "./components/Admin";
+import NewPost from "./components/NewPost";
 
 function App() {
   return (
     <main>
       <Navbar />
-      <div className="blog-main">
-        <Blogs/>
-      </div>
+      <NewPost/>
     </main>
   );
 }
