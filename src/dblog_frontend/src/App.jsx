@@ -1,29 +1,17 @@
-import { useState } from 'react';
-import { dblog_backend } from 'declarations/dblog_backend';
+import { useState } from "react";
+import { dblog_backend } from "declarations/dblog_backend";
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
+import Post from "./components/Post";
+import Blogs from "./components/Blogs";
 
 function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    dblog_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
+      <Navbar />
+      <div className="blog-main">
+        <Blogs/>
+      </div>
     </main>
   );
 }
