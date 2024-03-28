@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { dblog_backend } from "../../../declarations/dblog_backend";
 export default function NewPost() {
   async function handleData(event) {
@@ -8,12 +8,14 @@ export default function NewPost() {
     let month = d.toLocaleString('en-US', { month: 'long' });
     let year = d.getFullYear()
     let date = day+" "+month+" "+year
-    let author = event.target.author.value.split(",")
+    let author = event.target.author.value
 
     let title = event.target.title.value
     let image = event.target.image.value
     let content = event.target.content.value
     await dblog_backend.createBlog(title,image,author,content,date)
+    console.log("Data Added Successfully")
+    window.location.href = "/admin";
   }
 
   return (
