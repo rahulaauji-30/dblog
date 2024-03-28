@@ -1,18 +1,19 @@
 import Text "mo:base/Text";
 import List "mo:base/List";
 import Debug "mo:base/Debug";
-actor dblogs{
+import Array "mo:base/Array";
+actor dblogs {
   public type Post = {
-    Title:Text;
-    Image:Text;
-    Author:List.List<Text>;
-    Content:Text;
-    Date:Text;
+    Title : Text;
+    Image : Text;
+    Author : Text;
+    Content : Text;
+    Date : Text;
   };
 
-  var blogs:List.List<Post> = List.nil<Post> ();
+  var blogs : List.List<Post> = List.nil<Post>();
 
-  public func createBlog(title:Text,image:Text,author:List.List<Text>,content:Text,date:Text){
+  public func createBlog(title : Text, image : Text, author : Text, content : Text, date : Text) {
     let newBlog = {
       Title = title;
       Image = image;
@@ -20,11 +21,16 @@ actor dblogs{
       Content = content;
       Date = date;
     };
-    blogs := List.push(newBlog,blogs);
-    Debug.print(debug_show(blogs))
+    blogs := List.push(newBlog, blogs);
+    Debug.print(debug_show (blogs));
   };
-  
-  public func deleteBlog(){
 
-  }
+  public query func getData() : async [Post]{
+    return List.toArray(blogs);
+  };
+
+public func deleteBlog() {
+  let array = List.toArray(blogs);
+    Debug.print(debug_show(array))
+};
 }
