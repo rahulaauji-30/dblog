@@ -9,16 +9,6 @@ import {
 import Blogs from './components/Blogs';
 import Post from './components/Post';
 
-const router = createBrowserRouter([
-  {
-    path:"/",
-    element:<Blogs/>
-  },
-  {
-    path:"/blogs",
-    element:<Post/>
-  }
-])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <ReactProvider router={router}/> */}
